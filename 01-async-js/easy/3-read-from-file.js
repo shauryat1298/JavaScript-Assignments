@@ -5,3 +5,17 @@
 // Try to do an expensive operation below the file read and see how it affects the output. 
 // Make the expensive operation more and more expensive and see how it affects the output. 
 
+const fs = require("fs");
+
+function afterFileRead(err, content){
+    console.log(content);
+}
+
+const afile = fs.readFile("C:/Users/shaur/Desktop/Learnings/web_devops/artifacts/a.txt", "utf-8", afterFileRead);
+
+let x = 0;
+for (let i=0; i<10000000000; i++){
+    x += i;
+}
+console.log(x);
+

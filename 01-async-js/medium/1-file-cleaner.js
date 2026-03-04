@@ -11,3 +11,16 @@
 // ```
 // hello world my name is raman
 // ```
+
+const fs = require("fs");
+
+const filePath = "C:/Users/shaur/Desktop/Learnings/web_devops/artifacts/c.txt";
+
+async function cleanFile() {
+    const content = await fs.promises.readFile(filePath, "utf8");
+    const cleaned = content.replace(/  +/g, " ");
+    await fs.promises.writeFile(filePath, cleaned, "utf8");
+    console.log("File cleaned successfully");
+}
+
+cleanFile();
